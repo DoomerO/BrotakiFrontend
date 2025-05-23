@@ -4,7 +4,7 @@ import type { post, user } from "../../interfaces/interfaces";
 import { FaEllipsisV } from "react-icons/fa";
 import dateDisplayer from "../../assets/functions/dateDisplayer";
 import ButtonIconFunction from "../buttons/ButtonIconFunction";
-import ButtonFunction from "../buttons/Buttonfunction";
+import ButtonFunction from "../buttons/ButtonFunction";
 
 interface postHeaderProps {
     user? : user,

@@ -3,6 +3,7 @@ import type { user, post } from "../../interfaces/interfaces";
 import PostHeader from "./PostHeader";
 import ButtonIconFunction from "../buttons/ButtonIconFunction";
 import { FaThumbsUp, FaShareAlt, FaCommentDots } from "react-icons/fa";
+import PostFooter from "./PostFooter";
 
 interface postProps {
     user? : user,
@@ -23,6 +24,10 @@ const Post = ({user, post} : postProps) => {
             <Text marginTop="5px" color="fontOpacityLight" fontSize="subText" fontFamily="body" fontWeight="normal" w="98%">
                 {`${post?.likes} curtidas`} 
             </Text>
+            <Text marginTop="5px" fontSize="post" textAlign="justify" fontFamily="body" fontWeight="normal" w="98%" minH="15vh" maxH="25vh">
+                <Text fontWeight="semibold">{user?.name + " "}</Text>{post?.desc}
+            </Text>
+            <PostFooter post={post}/>
         </Flex>
     )
 }

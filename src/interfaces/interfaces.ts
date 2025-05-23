@@ -13,4 +13,16 @@ interface post {
     date : Date
 }
 
-export type {user, post}
+interface comment {
+    desc : string,
+    likes : number,
+    user? : user,
+    post? : post
+}
+
+interface company {
+    name : string,
+    image : string
+}
+
+export type {user, post, comment, company}
