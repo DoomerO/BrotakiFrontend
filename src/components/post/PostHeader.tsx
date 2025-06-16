@@ -14,10 +14,10 @@ interface postHeaderProps {
 const PostHeader = ({user, post} : postHeaderProps) => {
  return (
     <Flex direction="row" w="100%" paddingTop="3" paddingBottom="3" align="center">
-        <Stack direction="row" gap="1" align="center">
+        <Stack direction="row" gap="2" align="center">
             <UserAvatar size="md" user={user}/>
             <Text fontWeight="semibold" fontFamily="body">{user?.name}</Text>
-            <Text fontWeight="normal" fontFamily="body" color="fontOpacityLight">{dateDisplayer((post) ? post.date.toString() : "xxxx-xx-xx")}</Text>
+            <Text fontWeight="normal" fontFamily="body" color="fontOpacityLight">{dateDisplayer((post) ? post.date.toISOString().toString() : "xxxx-xx-xx")}</Text>
             <ButtonFunction text={"Seguir"} type="link"/>
         </Stack>
         <Spacer/>
