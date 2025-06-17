@@ -5,6 +5,7 @@ import Post from "../components/post/Post";
 import { postArray } from "../fallbacks/posts";
 import UserSectionHome from "../components/userSections/UserSectionHome";
 import VerticalScroll from "../components/scrolls/VerticalScroll";
+import { companyDisp } from "../fallbacks/company";
 
 const renderPost = postArray.map((item, id) => {
     return <Post key={id} post={item} user={item.user}/>
@@ -19,7 +20,7 @@ const HomePage = () => {
                 {renderPost}
             </VerticalScroll>
             <Spacer/>
-            <UserSectionHome/>
+            <UserSectionHome company={companyDisp}/>
         </Page>
     )
 }
