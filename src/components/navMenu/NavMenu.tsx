@@ -3,6 +3,7 @@ import { FaHome, FaSearch, FaEnvelope, FaStore, FaBuilding, FaPlusSquare, FaBars
 import { Navigate, useNavigate } from "react-router";
 import NavMenuBtn from "./NavMenuBtn";
 import UserAvatar from "../user/UserAvatar";
+import CreateNewModal from "../modals/CreateNewModal";
 
 interface navMenuProps {
     selectedTitle?: string
@@ -63,7 +64,8 @@ const NavMenu = ({ selectedTitle }: navMenuProps) => {
     const navigate = useNavigate();
     
     const renderNavMenuBtns = buttonStruct.map((item) => {
-        return <NavMenuBtn key={buttonStruct.indexOf(item)} click={item.click} title={item.title} icon={item.icon} fontWeight={(selectedTitle == item.title)}/>
+        return (item.title == "Criar") ? <CreateNewModal key={buttonStruct.indexOf(item)} trigger={<NavMenuBtn click={item.click} title={item.title} icon={item.icon} fontWeight={(selectedTitle == item.title)}/>}/> 
+        : <NavMenuBtn key={buttonStruct.indexOf(item)} click={item.click} title={item.title} icon={item.icon} fontWeight={(selectedTitle == item.title)}/>
     })
 
     return (

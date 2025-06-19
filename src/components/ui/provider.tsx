@@ -39,6 +39,7 @@ const system = createSystem(defaultConfig, {
         fontOpacityDark: { value: "#ffffff60" },
         bgPageLight: { value: "#fff" },
         bgPageDark: { value: "#000" },
+        bgModalHeaderLight: {value: "#dfdfdf"},
         lineLight: { value: "#000" },
         lineDark: { value: "#fff" },
         bgNavButtonLightHover: { value: "#00000020" }

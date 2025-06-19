@@ -6,7 +6,8 @@ interface user {
 }
 
 interface post {
-    user : user,
+    user? : user,
+    userId? : number,
     image : string,
     desc : string,
     likes : number,
