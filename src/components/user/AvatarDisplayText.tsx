@@ -17,7 +17,7 @@ const AvatarDisplay = ({size, target, showFallback, fontSize, width, height} : a
                 <Avatar.Fallback name={(showFallback) ? target?.name : undefined}/>
                 <Avatar.Image src={target?.image}/>
             </Avatar.Root>
-            <Text w="100%" textAlign="justify" fontFamily="body" fontWeight="semibold" fontSize={fontSize??"body"}>{target?.name}</Text>
+            <Text w="100%" textAlign="left" fontFamily="body" fontWeight="semibold" fontSize={fontSize??"body"}>{target?.name}</Text>
         </Stack>
     )
 }

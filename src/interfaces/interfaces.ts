@@ -1,17 +1,23 @@
 interface user {
-    id : number,
-    name :  string,
-    points : number,
+    id? : number,
+    name? :  string,
+    points? : number,
     image? : string
 }
 
 interface post {
     user? : user,
     userId? : number,
-    image : string,
-    desc : string,
-    likes : number,
-    date : Date
+    PostID? : number,
+    image? : string,
+    desc? : string,
+    likes? : number,
+    date? : string,
+}
+
+interface postSkeletton {
+    ID? : number,
+    Posts? : post
 }
 
 interface comment {
@@ -21,9 +27,14 @@ interface comment {
     post? : post
 }
 
+interface postGambs {
+    user? : user;
+    post? : post;
+}
+
 interface company {
     name : string,
     image : string
 }
 
-export type {user, post, comment, company}
+export type {user, post, comment, company, postGambs, postSkeletton}

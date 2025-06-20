@@ -1,5 +1,5 @@
 import { Box, Flex, Stack, Text } from "@chakra-ui/react";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { useNavigate } from "react-router";
 import ButtonLink from "../buttons/ButtonLink";
 
@@ -10,6 +10,11 @@ interface pageComponent {
 
 const Page = ({children, flow} : pageComponent) => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const islogged = localStorage.getItem("logged");
+        if(!islogged) navigate("/login");
+    }, []);
 
     return (
         <Box display="flex" direction={flow??"column"} w="100%" h="100%" bgColor="bgPageLight" _dark={{backgroundColor : "bgPageDark"}}>

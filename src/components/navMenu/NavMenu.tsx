@@ -4,9 +4,11 @@ import { Navigate, useNavigate } from "react-router";
 import NavMenuBtn from "./NavMenuBtn";
 import UserAvatar from "../user/UserAvatar";
 import CreateNewModal from "../modals/CreateNewModal";
+import type { user } from "../../interfaces/interfaces";
 
 interface navMenuProps {
     selectedTitle?: string
+    user?: user
 }
 
 interface navMenuBtnProps {
@@ -16,56 +18,55 @@ interface navMenuBtnProps {
     fontWeight?: boolean;
 }
 
-const buttonStruct: navMenuBtnProps[] = [
-    {
-        click: () => { Navigate({ to: "/" }) },
-        title: "Página Inicial",
-        icon: <FaHome size="36" />
-    },
-    {
-        click: () => { null },
-        title: "Pesquisar",
-        icon: <FaSearch size="36" />
-    },
-    {
-        click: () => { null },
-        title: "Notificações",
-        icon: <FaEnvelope size="36" />
-    },
-    {
-        click: () => { null },
-        title: "Loja de Pontos",
-        icon: <FaStore size="36" />
-    },
-    {
-        click: () => { null },
-        title: "Sua Empresa",
-        icon: <FaBuilding size="36" />
-    },
-    {
-        click: () => { null },
-        title: "Criar",
-        icon: <FaPlusSquare size="36" />
-    },
-    {
-        click: () => { null },
-        title: "Perfil",
-        icon: <UserAvatar size="sm"/>
-    },
-    {
-        click: () => { null },
-        title: "Mais",
-        icon: <FaBars size="36" />
-    },
-]
+const NavMenu = ({ selectedTitle, user }: navMenuProps) => {
+    const buttonStruct: navMenuBtnProps[] = [
+        {
+            click: () => { Navigate({ to: "/" }) },
+            title: "Página Inicial",
+            icon: <FaHome size="36" />
+        },
+        {
+            click: () => { null },
+            title: "Pesquisar",
+            icon: <FaSearch size="36" />
+        },
+        {
+            click: () => { null },
+            title: "Notificações",
+            icon: <FaEnvelope size="36" />
+        },
+        {
+            click: () => { null },
+            title: "Loja de Pontos",
+            icon: <FaStore size="36" />
+        },
+        {
+            click: () => { null },
+            title: "Sua Empresa",
+            icon: <FaBuilding size="36" />
+        },
+        {
+            click: () => { null },
+            title: "Criar",
+            icon: <FaPlusSquare size="36" />
+        },
+        {
+            click: () => { null },
+            title: "Perfil",
+            icon: <UserAvatar user={user} size="sm" />
+        },
+        {
+            click: () => { null },
+            title: "Mais",
+            icon: <FaBars size="36" />
+        },
+    ]
 
-
-const NavMenu = ({ selectedTitle }: navMenuProps) => {
     const navigate = useNavigate();
-    
+
     const renderNavMenuBtns = buttonStruct.map((item) => {
-        return (item.title == "Criar") ? <CreateNewModal key={buttonStruct.indexOf(item)} trigger={<NavMenuBtn click={item.click} title={item.title} icon={item.icon} fontWeight={(selectedTitle == item.title)}/>}/> 
-        : <NavMenuBtn key={buttonStruct.indexOf(item)} click={item.click} title={item.title} icon={item.icon} fontWeight={(selectedTitle == item.title)}/>
+        return (item.title == "Criar") ? <CreateNewModal key={buttonStruct.indexOf(item)} loggedUser={user??undefined} trigger={<NavMenuBtn click={item.click} title={item.title} icon={item.icon} fontWeight={(selectedTitle == item.title)} />} />
+            : <NavMenuBtn key={buttonStruct.indexOf(item)} click={item.click} title={item.title} icon={item.icon} fontWeight={(selectedTitle == item.title)} />
     })
 
     return (
